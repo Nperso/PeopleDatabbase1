@@ -1,0 +1,94 @@
+﻿
+ <Window x:Class="PeopleDatabase1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="People Database"
+        Height="500"
+        Width="800">
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Search and Sort Controls -->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,10">
+
+            <Label Content="S_earch"
+                   VerticalAlignment="Center"
+                   Target="{Binding ElementName=SearchBox}" />
+
+            <TextBox x:Name="SearchBox"
+                     Width="200"
+                     Margin="5,0,20,0"
+                     TextChanged="SearchBox_TextChanged" />
+
+            <Button Content="Sort by Age (_O)"
+                    Width="120"
+                    Margin="0,0,10,0"
+                    Click="SortAge_Click" />
+
+            <Button Content="Sort by Name (_N)"
+                    Width="130"
+                    Click="SortName_Click" />
+
+        </StackPanel>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="PeopleGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name"
+                                    Binding="{Binding FirstName}" />
+
+                <DataGridTextColumn Header="Last Name"
+                                    Binding="{Binding LastName}" />
+
+                <DataGridTextColumn Header="Age"
+                                    Binding="{Binding Age}" />
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <!-- Entry Area -->
+        <StackPanel Grid.Row="2"
+                    Margin="0,10">
+
+            <Label Content="First Name" />
+            <TextBox x:Name="FirstNameBox" />
+
+            <Label Content="Last Name" />
+            <TextBox x:Name="LastNameBox" />
+
+            <Label Content="Age" />
+            <TextBox x:Name="AgeBox" />
+
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    Margin="0,10">
+
+            <Button Content="_Add"
+                    Width="100"
+                    Margin="0,0,10,0"
+                    Click="Add_Click" />
+
+            <Button Content="_Delete"
+                    Width="100"
+                    Click="Delete_Click" />
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>
